@@ -33,3 +33,32 @@ def test_accept_coins(machine: VendingMachine, printer: VendingMachinePrinter, c
     assert machine.balance == 5
     assert machine.coins == [5]
     assert machine.display == "5"
+
+
+def test_select_product(machine: VendingMachine, printer: VendingMachinePrinter):
+    # TODO: use the printer and approvaltests.verify instead of assertions
+
+    machine.select_product("Cola")
+
+    assert machine.display == "PRICE $1.00"
+
+    machine.tick()
+
+    assert machine.display == "INSERT COIN"
+
+
+def test_pay_then_select_product(machine: VendingMachine, printer: VendingMachinePrinter, coins: dict):
+    # TODO: use the printer and approvaltests.verify instead of assertions
+
+    machine.insert_coin(coins["quarter"])
+    machine.insert_coin(coins["quarter"])
+    machine.insert_coin(coins["quarter"])
+    machine.insert_coin(coins["quarter"])
+    machine.select_product("Cola")
+
+    assert machine.display == "THANK YOU"
+    assert machine.dispensed_product == "Cola"
+
+    machine.tick()
+
+    assert machine.display == "INSERT COIN"
