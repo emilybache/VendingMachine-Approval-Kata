@@ -1,6 +1,6 @@
 
 class VendingMachine:
-    def __init__(self, selected_product=None, stock=None):
+    def __init__(self):
         self.display = ""
         self.coins = []
         self.returns = []
