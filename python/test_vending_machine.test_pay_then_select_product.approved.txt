@@ -1,0 +1,27 @@
+Feature: Pay first then select product
+
+VendingMachine
+Display                                                   65
+Balance                                                   65
+Coins                                        [25, 25, 10, 5]
+Returns                                                   []
+Selected product                                        None
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                              []
+
+select product: Candy
+
+VendingMachine
+Display                                            THANK YOU
+Dispensed product                                      Candy
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 0}
+Banked Coins                                 [25, 25, 10, 5]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 0}
+Banked Coins                                 [25, 25, 10, 5]
+

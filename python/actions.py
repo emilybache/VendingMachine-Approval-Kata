@@ -1,4 +1,10 @@
 
+COINS = {"penny": 1,
+         "nickel": 5,
+         "dime": 10,
+         "quarter": 25}
+
+
 def select_product(product, machine):
     machine.select_product(product)
     return f"select product: {product}"

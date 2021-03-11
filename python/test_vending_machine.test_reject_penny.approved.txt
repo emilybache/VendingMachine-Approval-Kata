@@ -1,0 +1,19 @@
+Feature: Reject penny
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                        None
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                              []
+
+insert coin: penny
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Returns                                                  [1]
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+

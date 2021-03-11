@@ -1,0 +1,28 @@
+Feature: Sold out of Chips
+
+VendingMachine
+Display                                                   50
+Balance                                                   50
+Coins                                               [25, 25]
+Returns                                                   []
+Selected product                                        None
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 0, 'Candy': 1}
+Banked Coins                                              []
+
+select product: Chips
+
+VendingMachine
+Display                                             SOLD OUT
+Balance                                                   50
+Coins                                               [25, 25]
+Stock                    {'Cola': 1, 'Chips': 0, 'Candy': 1}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                                   50
+Balance                                                   50
+Coins                                               [25, 25]
+Stock                    {'Cola': 1, 'Chips': 0, 'Candy': 1}
+

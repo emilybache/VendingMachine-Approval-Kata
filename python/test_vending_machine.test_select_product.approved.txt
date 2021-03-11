@@ -1,0 +1,40 @@
+Feature: Select product and see price
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                        None
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                              []
+
+select product: Cola
+
+VendingMachine
+Display                                          PRICE $1.00
+Selected product                                        Cola
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Selected product                                        Cola
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+select product: Chips
+
+VendingMachine
+Display                                          PRICE $0.50
+Selected product                                       Chips
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Selected product                                       Chips
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
