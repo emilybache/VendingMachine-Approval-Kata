@@ -21,3 +21,9 @@ class VendingMachine:
             self._display_balance()
         else:
             self.returns.append(value)
+
+    def return_coins(self):
+        self.balance = 0
+        self.returns = self.coins
+        self.coins = []
+        self._display_balance()
