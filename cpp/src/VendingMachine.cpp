@@ -26,8 +26,7 @@ void VendingMachine::insertCoin(int value) {
     if (std::find(acceptedCoins->begin(), acceptedCoins->end(), value) != acceptedCoins->end()) {
         balance += value;
         coins->push_back(value);
-        double dollars = (double)balance/100.0;
-        display = "$" + getFormattedNumberAsString(dollars, 2);
+        updateDisplay();
 
     } else {
         returns->push_back(value);
@@ -38,5 +37,25 @@ VendingMachine::~VendingMachine() {
     delete coins;
     delete returns;
     delete acceptedCoins;
+}
+
+void VendingMachine::returnCoins() {
+    delete returns;
+    returns = coins;
+    delete coins;
+    coins = new std::vector<int>(0, 0);
+    balance = 0;
+    updateDisplay();
+}
+
+void VendingMachine::updateDisplay() {
+    if (balance > 0)
+    {
+        double dollars = (double)balance/100.0;
+        display = "$" + getFormattedNumberAsString(dollars, 2);
+    } else
+    {
+        display = "INSERT COIN";
+    }
 }
 
