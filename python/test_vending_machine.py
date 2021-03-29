@@ -4,6 +4,7 @@ from approvaltests import verify
 from vending_machine import VendingMachine
 from vending_machine_printer import VendingMachinePrinter
 
+
 @pytest.fixture()
 def machine():
     return VendingMachine()
