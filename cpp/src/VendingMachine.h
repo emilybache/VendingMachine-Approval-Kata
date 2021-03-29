@@ -12,9 +12,12 @@ public:
     std::string display;
     long balance; // in cents
     std::vector<int>* coins;
+    std::vector<int>* returns;
 
     void insertCoin(int value);
 
+private:
+    std::vector<int>* acceptedCoins;
 };
 
 

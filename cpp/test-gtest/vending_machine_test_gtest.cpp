@@ -35,3 +35,4 @@ TEST_F(VendingMachineTest, InsertCoins) {
     vector<int> expected_coins = {5};
     ASSERT_EQ(expected_coins, *machine->coins);
 }
+
