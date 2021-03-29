@@ -7,6 +7,7 @@
 class VendingMachine {
 public:
     VendingMachine();
+    virtual ~VendingMachine();
 
     std::string display;
     long balance; // in cents

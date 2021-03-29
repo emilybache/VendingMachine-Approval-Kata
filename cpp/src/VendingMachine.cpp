@@ -24,3 +24,7 @@ void VendingMachine::insertCoin(int value) {
     display = "$" + getFormattedNumberAsString(dollars, 2);
 }
 
+VendingMachine::~VendingMachine() {
+    delete coins;
+}
+
