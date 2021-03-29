@@ -36,5 +36,7 @@ void VendingMachine::insertCoin(int value) {
 
 VendingMachine::~VendingMachine() {
     delete coins;
+    delete returns;
+    delete acceptedCoins;
 }
 
