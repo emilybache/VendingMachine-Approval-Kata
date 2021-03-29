@@ -1,6 +1,6 @@
 set(TEST_NAME sample_test_catch2)
 include(FetchContent)
-set(SOURCE_FILES main.cpp vending_machine_test_catch2.cpp)
+set(SOURCE_FILES main.cpp insert_coins_catch2.cpp)
 
 # catch2
 FetchContent_Declare(

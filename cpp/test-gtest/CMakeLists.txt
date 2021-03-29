@@ -1,6 +1,6 @@
 set(TEST_NAME sample_test_gtest)
 include(FetchContent)
-set(SOURCE_FILES main.cpp vending_machine_test_gtest.cpp)
+set(SOURCE_FILES main.cpp insert_coins_gtest.cpp)
 
 # approvals
 FetchContent_Declare(
