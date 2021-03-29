@@ -15,10 +15,8 @@ public:
     std::vector<int>* returns;
 
     void insertCoin(int value);
-    void returnCoins();
 
 private:
-    void updateDisplay();
     std::vector<int>* acceptedCoins;
 };
 
