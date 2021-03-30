@@ -9,17 +9,19 @@ machine(machine), columns(60) {}
 //
 // foo                       bar
 //
-std::string VendingMachinePrinter::formatLine(std::string key, std::string value) {
-    int whitespaceSize = columns - key.size() - value.size();
+std::string VendingMachinePrinter::formatLine(const std::string& key, const std::string& value) const {
+    auto whitespaceSize = columns - key.size() - value.size();
     std::string whitespace = std::string(whitespaceSize, ' ');
     std::stringstream stream;
-    stream << key << whitespace << value;
+    stream << key << whitespace << value << '\n';
     return stream.str();
 }
 
 std::string VendingMachinePrinter::print() {
+    std::string printout = "VendingMachine";
     // TODO: finish this
-    return "VendingMachine";
+
+    return printout;
 }
 
 VendingMachinePrinter::~VendingMachinePrinter() {
