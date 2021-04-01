@@ -36,10 +36,3 @@ def test_accept_coins(machine: VendingMachine, printer: VendingMachinePrinter, c
     assert machine.display == "5"
 
 
-def test_return_coins(machine: VendingMachine, printer: VendingMachinePrinter):
-    # TODO: use the printer and approvaltests.verify instead of assertions
-
-    machine.return_coins()
-
-    assert machine.balance == 0
-
