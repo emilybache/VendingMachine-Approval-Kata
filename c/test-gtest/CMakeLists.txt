@@ -17,7 +17,7 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(googletest)
 
-add_executable(${TEST_NAME})
+add_executable(${TEST_NAME} VendingMachineTest.h)
 target_sources(${TEST_NAME} PRIVATE ${SOURCE_FILES})
 target_link_libraries(${TEST_NAME} src gtest ApprovalTests::ApprovalTests)
 set_property(TARGET ${TEST_NAME} PROPERTY CXX_STANDARD 11)
