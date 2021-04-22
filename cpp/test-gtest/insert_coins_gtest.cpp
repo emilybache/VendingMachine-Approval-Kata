@@ -8,15 +8,25 @@
 using namespace std;
 
 
-TEST_F(VendingMachineTest, InsertCoins) {
-    ASSERT_EQ("INSERT COIN", machine->display);
+TEST_F(VendingMachineTest, InsertCoins)
+{
+    string toApprove = printer->print();
 
-    machine->insertCoin(coins->at("nickel"));
+    toApprove += insertCoin("nickel");
+    toApprove += printer->print();
 
-    ASSERT_EQ("$0.05", machine->display);
-    ASSERT_EQ(5, machine->balance);
-    vector<int> expected_coins = {5};
-    ASSERT_EQ(expected_coins, *machine->coins);
+    toApprove += insertCoin("dime");
+    toApprove += printer->print();
+
+    toApprove += insertCoin("quarter");
+    toApprove += printer->print();
+
+    toApprove += insertCoin("penny");
+    toApprove += printer->print();
+
+    ApprovalTests::Approvals::verify(toApprove);
 
 }
+
+
 

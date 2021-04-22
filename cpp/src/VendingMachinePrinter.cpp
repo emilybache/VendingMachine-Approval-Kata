@@ -3,13 +3,16 @@
 #include "VendingMachinePrinter.h"
 
 VendingMachinePrinter::VendingMachinePrinter(VendingMachine* machine):
-machine(machine), columns(60) {}
+machine(machine), columns(50) {}
 
 
 
 std::string VendingMachinePrinter::print() {
-    std::string printout = "VendingMachine";
-    // TODO: finish this
+    std::string printout = "VendingMachine:\n";
+    printout += formatLine("Display", machine->display);
+    printout += formatLine("Balance", std::to_string(machine->balance));
+    printout += formatLine("Coins", printVector(machine->coins));
+    printout += formatLine("Returns", printVector(machine->returns));
 
     return printout;
 }

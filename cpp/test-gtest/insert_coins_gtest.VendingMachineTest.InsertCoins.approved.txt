@@ -1,0 +1,38 @@
+VendingMachine:
+Display                                INSERT COIN
+Balance                                          0
+Coins                                           {}
+Returns                                         {}
+
+User action: INSERT COIN 'nickel'
+
+VendingMachine:
+Display                                      $0.05
+Balance                                          5
+Coins                                          {5}
+Returns                                         {}
+
+User action: INSERT COIN 'dime'
+
+VendingMachine:
+Display                                      $0.15
+Balance                                         15
+Coins                                      {5, 10}
+Returns                                         {}
+
+User action: INSERT COIN 'quarter'
+
+VendingMachine:
+Display                                      $0.40
+Balance                                         40
+Coins                                  {5, 10, 25}
+Returns                                         {}
+
+User action: INSERT COIN 'penny'
+
+VendingMachine:
+Display                                      $0.40
+Balance                                         40
+Coins                                  {5, 10, 25}
+Returns                                        {1}
+
