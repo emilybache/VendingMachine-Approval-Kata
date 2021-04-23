@@ -1,15 +1,17 @@
 #include <gtest/gtest.h>
 
-extern "C"
-{
-#include "vending_machine.h"
-#include "VendingMachineTest.h"
-#include "coin.h"
-}
-
 using namespace std;
 
+extern "C"
+{
+#include "vending_machine_printer.h"
+#include "vending_machine.h"
+#include "coin.h"
+#include "VendingMachineTest.h"
+}
+
 TEST_F(VendingMachineTest, InsertCoins) {
+
     ASSERT_EQ("INSERT COIN", string(machine->display));
 
     insert_coin(machine, coin_with_name("nickel"));

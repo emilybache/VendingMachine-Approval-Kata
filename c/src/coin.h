@@ -3,7 +3,7 @@
 #ifndef VENDINGMACHINE_COIN_H
 #define VENDINGMACHINE_COIN_H
 
-int coin_with_name(std::string name) {
+static int coin_with_name(std::string name) {
     if (name == "penny") {
         return 1;
     }

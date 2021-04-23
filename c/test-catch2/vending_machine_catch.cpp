@@ -4,6 +4,7 @@
 
 extern "C"
 {
+#include "vending_machine_printer.h"
 #include "vending_machine.h"
 #include "coin.h"
 }
