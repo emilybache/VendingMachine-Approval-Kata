@@ -5,6 +5,7 @@
 
 // maximum buffer size
 #define MAX_PRINT_LENGTH 20000
+// lines are fixed width
 #define LINE_LENGTH 60
 
 void
