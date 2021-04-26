@@ -25,8 +25,6 @@ def coins():
 
 
 def test_accept_coins(machine: VendingMachine, printer: VendingMachinePrinter, coins: dict):
-    # TODO: use the printer and approvaltests.verify instead of assertions
-
     assert machine.display == "INSERT COIN"
 
     machine.insert_coin(coins["nickel"])
