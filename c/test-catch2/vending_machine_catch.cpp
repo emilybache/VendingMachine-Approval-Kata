@@ -18,10 +18,10 @@ TEST_CASE ("VendingMachine") {
     SECTION("insert nickel") {
         insert_coin(machine, coin_with_name("nickel"));
 
-        CHECK("$0.05" == string(machine->display));
         CHECK(5 == machine->balance);
         CHECK(1 == machine->coin_count);
         CHECK(5 == machine->coins[0]);
+        CHECK("$0.05" == string(machine->display));
     }
 }
 

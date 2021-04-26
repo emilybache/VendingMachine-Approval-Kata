@@ -16,9 +16,9 @@ TEST_F(VendingMachineTest, InsertCoins) {
 
     insert_coin(machine, coin_with_name("nickel"));
 
-    ASSERT_EQ("$0.05", string(machine->display));
     ASSERT_EQ(5, machine->balance);
     ASSERT_EQ(1, machine->coin_count);
     ASSERT_EQ(5, machine->coins[0]);
+    ASSERT_EQ("$0.05", string(machine->display));
 
 }
