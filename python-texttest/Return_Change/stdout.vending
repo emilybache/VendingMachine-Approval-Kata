@@ -1,0 +1,29 @@
+Feature: Return Change
+
+VendingMachine
+Display                                                   75
+Balance                                                   75
+Coins                                           [25, 25, 25]
+Returns                                                   []
+Selected product                                        None
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                     [25, 10, 5]
+
+select product: Candy
+
+VendingMachine
+Display                                            THANK YOU
+Returns                                              [10, 5]
+Dispensed product                                      Candy
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 0}
+Banked Coins                                [25, 25, 25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 0}
+Banked Coins                                [25, 25, 25, 25]
+
+

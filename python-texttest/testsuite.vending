@@ -1,0 +1,11 @@
+# Ordered list of tests in test suite. Add as appropriate
+Accept_Coins
+Reject_Penny
+Select_Product_and_see_Price
+Pay_for_Cola
+Pay_for_Chips
+Pay_then_select_Candy
+Sold_out_of_Chips
+Return_Coins
+Change_is_Available
+Return_Change

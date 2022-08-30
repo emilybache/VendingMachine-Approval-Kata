@@ -1,0 +1,37 @@
+Feature: Accept Coins
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                        None
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                              []
+
+insert coin: nickel
+
+VendingMachine
+Display                                                    5
+Balance                                                    5
+Coins                                                    [5]
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+insert coin: dime
+
+VendingMachine
+Display                                                   15
+Balance                                                   15
+Coins                                                [5, 10]
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                   40
+Balance                                                   40
+Coins                                            [5, 10, 25]
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+

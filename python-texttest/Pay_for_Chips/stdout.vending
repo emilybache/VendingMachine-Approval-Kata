@@ -1,0 +1,37 @@
+Feature: Pay for Chips
+
+VendingMachine
+Display                                                   25
+Balance                                                   25
+Coins                                                   [25]
+Returns                                                   []
+Selected product                                       Chips
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                              []
+
+insert coin: quarter
+
+VendingMachine
+Display                                                   50
+Balance                                                   50
+Coins                                               [25, 25]
+Selected product                                       Chips
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                            THANK YOU
+Dispensed product                                      Chips
+Stock                    {'Cola': 1, 'Chips': 0, 'Candy': 1}
+Banked Coins                                        [25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Stock                    {'Cola': 1, 'Chips': 0, 'Candy': 1}
+Banked Coins                                        [25, 25]
+
+
