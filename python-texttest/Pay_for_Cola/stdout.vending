@@ -1,0 +1,64 @@
+Feature: Pay for Cola
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                        Cola
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                              []
+
+insert coin: quarter
+
+VendingMachine
+Display                                                   25
+Balance                                                   25
+Coins                                                   [25]
+Selected product                                        Cola
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                   50
+Balance                                                   50
+Coins                                               [25, 25]
+Selected product                                        Cola
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                   75
+Balance                                                   75
+Coins                                           [25, 25, 25]
+Selected product                                        Cola
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                  100
+Balance                                                  100
+Coins                                       [25, 25, 25, 25]
+Selected product                                        Cola
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                            THANK YOU
+Dispensed product                                       Cola
+Stock                    {'Cola': 0, 'Chips': 1, 'Candy': 1}
+Banked Coins                                [25, 25, 25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Stock                    {'Cola': 0, 'Chips': 1, 'Candy': 1}
+Banked Coins                                [25, 25, 25, 25]
+
+

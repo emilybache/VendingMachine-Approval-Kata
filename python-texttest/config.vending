@@ -1,0 +1,10 @@
+# Full path to the System Under Test (or Java Main Class name)
+executable:${TEXTTEST_ROOT}\test_rig.py
+
+# Naming scheme to use for files for stdin,stdout and stderr
+filename_convention_scheme:standard
+
+# Expanded name to use for application
+full_name:Vending Machine
+
+copy_test_path:use_case.py

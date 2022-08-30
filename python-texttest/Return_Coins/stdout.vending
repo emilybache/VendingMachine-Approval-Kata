@@ -1,0 +1,20 @@
+Feature: Return Coins
+
+VendingMachine
+Display                                                   35
+Balance                                                   35
+Coins                                               [25, 10]
+Returns                                                   []
+Selected product                                        None
+Dispensed product                                       None
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+Banked Coins                                              []
+
+Return coins
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Returns                                             [25, 10]
+Stock                    {'Cola': 1, 'Chips': 1, 'Candy': 1}
+
+
