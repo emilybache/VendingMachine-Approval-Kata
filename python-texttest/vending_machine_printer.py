@@ -6,29 +6,19 @@ class VendingMachinePrinter:
         self.columns = 60
         self.machine = machine
 
-    def print_everything(self, include_empty=True):
+    def print(self):
         text = "VendingMachine\n"
-        text += self.format_line_with_whitespace("Display", self.machine.display)
-        fields = [
-            ("Balance", self.machine.balance),
-            ("Coins", self.machine.coins),
-            ("Returns", self.machine.returns),
-            ("Selected product", self.machine.selected_product),
-            ("Dispensed product", self.machine.dispensed_product),
-            ("Stock", self.machine.stock),
-            ("Banked Coins", self.machine.bank),
-        ]
-        for name, field in fields:
-            if field or include_empty:
-                text += self.format_line_with_whitespace(name, field)
-
-        text += "\n"
+        # TODO: finish this
         return text
 
-    def print_significant_fields(self):
-        return self.print_everything(include_empty=False)
-
     def format_line_with_whitespace(self, name, value):
+        """
+        Convenience function that lays out a name and a value at either ends of a fixed-width line.
+        eg if you call it with name="Foo" value="Bar" it will return
+
+        Foo                                       Bar
+
+        """
         value_as_str = f"{value}"
         whitespace_size = self.columns - len(name) - len(value_as_str)
         whitespace = ""

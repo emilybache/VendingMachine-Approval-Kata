@@ -15,25 +15,15 @@ class Story:
         self._to_verify += "\n\n"
 
     def arrange(self):
-        self._to_verify += self.printer.print_everything()
+        self._to_verify += self.printer.print()
 
     def act(self, action):
         self._to_verify += action
         self._to_verify += "\n\n"
-        self._to_verify += self.printer.print_significant_fields()
+        self._to_verify += self.printer.print()
 
     def __str__(self):
         return self._to_verify
-
-
-def select_product(product, machine):
-    machine.select_product(product)
-    return f"select product: {product}"
-
-
-def wait_5_secs(machine):
-    machine.tick()
-    return "wait 5 seconds for display to refresh"
 
 
 def insert_coin(coin_name, machine):
@@ -41,9 +31,7 @@ def insert_coin(coin_name, machine):
     return f"insert coin: {coin_name}"
 
 
-def return_coins(machine):
-    machine.return_coins()
-    return "Return coins"
+
 
 # These are initialized in the test_rig
 machine = None

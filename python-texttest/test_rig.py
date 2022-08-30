@@ -6,7 +6,7 @@ from vending_machine import VendingMachine
 from vending_machine_printer import VendingMachinePrinter
 
 if __name__ == "__main__":
-    machine = VendingMachine(stock={"Cola": 1, "Chips": 1, "Candy": 1})
+    machine = VendingMachine()
     printer = VendingMachinePrinter(machine)
     story = Story(printer)
 
