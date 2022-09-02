@@ -7,11 +7,11 @@ class VendingMachinePrinter:
         self.machine = machine
 
     def print(self):
-        text = "VendingMachine\n"
+        text = "VendingMachine: TODO - implement this printer\n"
         # TODO: finish this
         return text
 
-    def format_line_with_whitespace(self, name, value):
+    def format_line_with_whitespace(self, name: str, value):
         """
         Convenience function that lays out a name and a value at either ends of a fixed-width line.
         eg if you call it with name="Foo" value="Bar" it will return
