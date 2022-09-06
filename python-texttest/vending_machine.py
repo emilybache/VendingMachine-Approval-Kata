@@ -39,6 +39,19 @@ class VendingMachine:
             cost = self.prices[product]/100.0
             self.display = f"PRICE ${cents_to_dollars.format(cost)}"
 
+    def choose_product(self, product):
+        previously_selected_product = self.selected_product
+        self.selected_product = product
+        if self.balance >= self.prices[self.selected_product]:
+            if self.display == "CONFIRM SELECTION" and previously_selected_product == self.selected_product:
+                self._dispense_product()
+            else:
+                self.display = "CONFIRM SELECTION"
+        else:
+            cents_to_dollars = '{:,.2f}'
+            cost = self.prices[product]/100.0
+            self.display = f"PRICE ${cents_to_dollars.format(cost)}"
+
     def _dispense_product(self):
         if self.stock[self.selected_product] >= 1:
             self.stock[self.selected_product] -= 1
@@ -65,8 +78,11 @@ class VendingMachine:
             self._display_balance()
             self.dispensed_product = None
             self.returns = []
-        elif self.selected_product and self.balance >= self.prices[self.selected_product]:
+        elif self.display != "CONFIRM SELECTION" and self.selected_product and self.balance >= self.prices[self.selected_product]:
             self._dispense_product()
+
+    def refresh_display(self):
+        self.tick()
 
     def update_stock(self, product, quantity):
         self.stock[product] = quantity
