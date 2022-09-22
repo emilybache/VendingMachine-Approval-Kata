@@ -35,4 +35,3 @@ def test_accept_coins(machine: VendingMachine, printer: VendingMachinePrinter, c
     assert machine.coins == [5]
     assert machine.display == "5"
 
-

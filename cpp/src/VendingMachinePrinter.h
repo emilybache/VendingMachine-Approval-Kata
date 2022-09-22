@@ -11,9 +11,11 @@ public:
     virtual ~VendingMachinePrinter();
 
     std::string print();
-    std::string formatLine(std::string key, std::string value);
+    std::string formatLine(const std::string& key, const std::string& value) const;
+    std::string printVector(const std::vector<int>* items) const;
 private:
     VendingMachine* machine;
+
     int columns;
 };
 

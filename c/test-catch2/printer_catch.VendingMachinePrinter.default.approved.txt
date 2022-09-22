@@ -1,0 +1,4 @@
+VendingMachine
+Key                                                   Value
+Other Key                                     Another Value
+

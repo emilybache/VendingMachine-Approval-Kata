@@ -5,23 +5,41 @@
 VendingMachinePrinter::VendingMachinePrinter(VendingMachine* machine):
 machine(machine), columns(60) {}
 
-// convenience function to lay out a key value pair at either end of a line like this:
-//
-// foo                       bar
-//
-std::string VendingMachinePrinter::formatLine(std::string key, std::string value) {
-    int whitespaceSize = columns - key.size() - value.size();
-    std::string whitespace = std::string(whitespaceSize, ' ');
-    std::stringstream stream;
-    stream << key << whitespace << value;
-    return stream.str();
-}
+
 
 std::string VendingMachinePrinter::print() {
+    std::string printout = "VendingMachine";
     // TODO: finish this
-    return "VendingMachine";
+
+    return printout;
 }
 
 VendingMachinePrinter::~VendingMachinePrinter() {
     machine = nullptr;
+}
+
+// convenience function to lay out a key value pair at either end of a line like this:
+//
+// foo                       bar
+//
+std::string VendingMachinePrinter::formatLine(const std::string& key, const std::string& value) const {
+    auto whitespaceSize = columns - key.size() - value.size();
+    std::string whitespace = std::string(whitespaceSize, ' ');
+    std::stringstream stream;
+    stream << key << whitespace << value << '\n';
+    return stream.str();
+}
+
+// convenience function to print a vector of integers in a readable way
+// {5, 10}
+std::string VendingMachinePrinter::printVector(const std::vector<int>* items) const {
+    std::stringstream stream;
+    stream << "{";
+    std::string separator;
+    for (auto const& value : *items) {
+        stream << separator << value;
+        separator = ", ";
+    }
+    stream << "}";
+    return stream.str();
 }

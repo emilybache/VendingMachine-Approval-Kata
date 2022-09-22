@@ -1,6 +1,6 @@
-set(TEST_NAME sample_test_catch2)
+set(TEST_NAME vending_machine_catch2)
 include(FetchContent)
-set(SOURCE_FILES main.cpp insert_coins_catch2.cpp printer_catch2.cpp)
+set(SOURCE_FILES main.cpp vending_machine_catch.cpp printer_catch.cpp)
 
 # catch2
 FetchContent_Declare(
@@ -16,7 +16,7 @@ FetchContent_Declare(
         GIT_TAG        v.10.5.1)
 FetchContent_MakeAvailable(ApprovalTests)
 
-add_executable(${TEST_NAME} return_coins_catch2.cpp)
+add_executable(${TEST_NAME})
 target_sources(${TEST_NAME} PRIVATE ${SOURCE_FILES})
 target_link_libraries(${TEST_NAME} src Catch2::Catch2 ApprovalTests::ApprovalTests)
 set_property(TARGET ${TEST_NAME} PROPERTY CXX_STANDARD 11)
