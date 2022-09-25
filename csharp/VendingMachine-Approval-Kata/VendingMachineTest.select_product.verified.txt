@@ -1,0 +1,50 @@
+﻿Feature: Select product and see price
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Returns                                                     
+Selected product                                            
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+select product: Cola
+
+VendingMachine
+Display                                           PRICE 1,00
+Balance                                                    0
+Returns                                                     
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Returns                                                     
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+select product: Chips
+
+VendingMachine
+Display                                            PRICE ,50
+Balance                                                    0
+Returns                                                     
+Selected product                                       Chips
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Returns                                                     
+Selected product                                       Chips
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                

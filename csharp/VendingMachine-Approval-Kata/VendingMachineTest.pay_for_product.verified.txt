@@ -1,0 +1,70 @@
+﻿Feature: Pay for product
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Returns                                                     
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+insert coin: quarter
+
+VendingMachine
+Display                                                   25
+Balance                                                   25
+Returns                                                     
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+insert coin: quarter
+
+VendingMachine
+Display                                                   50
+Balance                                                   50
+Returns                                                     
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+insert coin: quarter
+
+VendingMachine
+Display                                                   75
+Balance                                                   75
+Returns                                                     
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+insert coin: quarter
+
+VendingMachine
+Display                                                  100
+Balance                                                  100
+Returns                                                     
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                            THANK YOU
+Balance                                                    0
+Returns                                                     
+Selected product                                            
+Dispensed product                                       Cola
+Stock                                              [Cola, 0]
+Banked Coins                                  25, 25, 25, 25
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Returns                                                     
+Selected product                                            
+Dispensed product                                           
+Stock                                              [Cola, 0]
+Banked Coins                                  25, 25, 25, 25
