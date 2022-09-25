@@ -1,0 +1,40 @@
+﻿Feature: Accept coins
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Returns                                                     
+Selected product                                            
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+insert coin: nickel
+
+VendingMachine
+Display                                                    5
+Balance                                                    5
+Returns                                                     
+Selected product                                            
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+insert coin: dime
+
+VendingMachine
+Display                                                   15
+Balance                                                   15
+Returns                                                     
+Selected product                                            
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                
+insert coin: quarter
+
+VendingMachine
+Display                                                   40
+Balance                                                   40
+Returns                                                     
+Selected product                                            
+Dispensed product                                           
+Stock                                              [Cola, 1]
+Banked Coins                                                

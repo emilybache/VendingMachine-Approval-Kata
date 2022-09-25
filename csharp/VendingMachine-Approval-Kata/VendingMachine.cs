@@ -3,23 +3,24 @@
 public class VendingMachine
 {
     private readonly List<int> _acceptedCoins = new () {5, 10 ,25};
-    private List<int> _bank = new();
+    public List<int> Bank { get; } = new();
     private List<int> _coins = new();
     public string? DispensedProduct = "";
     private Dictionary<string, int> _prices = new()
     {
         { "Cola", 100 }, { "Chips", 50 }, { "Candy", 65 }
     };
-    private List<int> _returns = new ();
-    private string? _selectedProduct;
-    private Dictionary<string, int> _stock;
+
+    public List<int> Returns { get; private set; } = new();
+    public string? SelectedProduct { get; set; }
+    public Dictionary<string, int> Stock { get; }
 
     public VendingMachine(string selectedProduct, Dictionary<string, int> stock)
     {
         Display = "";
         Balance = 0;
-        _stock = stock;
-        _selectedProduct = selectedProduct;
+        Stock = stock;
+        SelectedProduct = selectedProduct;
         DisplayBalance();
     }
 
@@ -51,14 +52,14 @@ public class VendingMachine
         }
         else
         {
-            _returns.Add(coin);
+            Returns.Add(coin);
         }
     }
 
     public void SelectProduct(string product)
     {
-        _selectedProduct = product;
-        if (Balance >= _prices[_selectedProduct])
+        SelectedProduct = product;
+        if (Balance >= _prices[SelectedProduct])
         {
             DispenseProduct();
         }
@@ -72,28 +73,31 @@ public class VendingMachine
 
     private void DispenseProduct()
     {
-        if (_selectedProduct != null && _stock[_selectedProduct] >= 1)
+        if (SelectedProduct != null && Stock[SelectedProduct] >= 1)
         {
-            _stock[_selectedProduct] -= 1;
+            Stock[SelectedProduct] -= 1;
             Display = "THANK YOU";
-            DispensedProduct = _selectedProduct;
-            Balance -= _prices[_selectedProduct];
-            _bank.Append<>(_coins);
+            DispensedProduct = SelectedProduct;
+            Balance -= _prices[SelectedProduct];
+            foreach (var coin in _coins)
+            {
+                Bank.Add(coin);
+            }
             _coins = new List<int>();
             if (Balance > 0)
             {
                 var change = GetChangeRequired(Balance);
-                _returns = change;
-                foreach (var coin in change) _bank.Remove(coin);
+                Returns = change;
+                foreach (var coin in change) Bank.Remove(coin);
                 Balance = 0;
             }
 
-            _selectedProduct = null;
+            SelectedProduct = null;
         }
         else
         {
             Display = "SOLD OUT";
-            _selectedProduct = null;
+            SelectedProduct = null;
         }
     }
 
@@ -110,9 +114,9 @@ public class VendingMachine
         {
             DisplayBalance();
             DispensedProduct = null;
-            _returns = new List<int>();
+            Returns = new List<int>();
         }
-        else if (_selectedProduct != null && Balance >= _prices[_selectedProduct])
+        else if (SelectedProduct != null && Balance >= _prices[SelectedProduct])
         {
             DispenseProduct();
         }
@@ -120,13 +124,13 @@ public class VendingMachine
 
     public void UpdateStock(string product, int quantity)
     {
-        _stock[product] = quantity;
+        Stock[product] = quantity;
     }
 
     public void ReturnCoins()
     {
         Balance = 0;
-        _returns = _coins;
+        Returns = _coins;
         _coins = new List<int>();
         DisplayBalance();
     }
@@ -134,9 +138,9 @@ public class VendingMachine
     private bool HasChange()
     {
         return
-            _bank.Contains(25)
-            && _bank.Contains(10)
-            && _bank.Contains(5)
+            Bank.Contains(25)
+            && Bank.Contains(10)
+            && Bank.Contains(5)
             ;
     }
 

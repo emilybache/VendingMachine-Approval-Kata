@@ -1,4 +1,6 @@
-﻿namespace VendingMachine_Approval_Kata;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace VendingMachine_Approval_Kata;
 
 public class VendingMachinePrinter
 {
@@ -10,17 +12,8 @@ public class VendingMachinePrinter
             _columns = 60;
             _machine = machine;
         }
-
-        private String print(){
-            // TODO: finish this
-            return "VendingMachine\n";
-        }
-
-        /** Convenience function that lays out a name and a value at either ends of a fixed-width line.
-         eg if you call it with name="Foo" value="Bar" it will return
-         Foo                                       Bar
-         */
-        private String formatLineWithWhitespace(String name, String value){
+        
+        private String Line(String name, String value){
             int whitespaceSize = _columns - name.Length - value.Length;
             String whiteSpace = "";
             for (int i = 0; i < whitespaceSize; i++) {
@@ -28,5 +21,24 @@ public class VendingMachinePrinter
             }
 
             return name + whiteSpace + value;
+        }
+        private String Line(String name, List<int> value){
+            return Line(name, string.Join(", ", value));
+        }
+        private String Line(String name, Dictionary<string, int> value){
+            return Line(name, string.Join(", ", value));
+        }
+
+        public string PrintEverything()
+        {
+            return $@"VendingMachine
+{Line("Display", _machine.Display)}
+{Line("Balance", ""+_machine.Balance)}
+{Line("Returns", _machine.Returns)}
+{Line("Selected product", ""+_machine.SelectedProduct)}
+{Line("Dispensed product", ""+_machine.DispensedProduct)}
+{Line("Stock", _machine.Stock)}
+{Line("Banked Coins", _machine.Bank)}
+";
         }
 }
