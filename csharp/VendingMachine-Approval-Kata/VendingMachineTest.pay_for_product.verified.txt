@@ -3,68 +3,62 @@
 VendingMachine
 Display                                    EXACT CHANGE ONLY
 Balance                                                    0
-Returns                                                     
+Coins                                                     []
+Returns                                                   []
 Selected product                                        Cola
 Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Stock                                            {[Cola, 1]}
+Banked Coins                                              []
+
 insert coin: quarter
 
 VendingMachine
 Display                                                $0.25
 Balance                                                   25
-Returns                                                     
+Coins                                                   [25]
 Selected product                                        Cola
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Stock                                            {[Cola, 1]}
+
 insert coin: quarter
 
 VendingMachine
 Display                                                $0.50
 Balance                                                   50
-Returns                                                     
+Coins                                               [25, 25]
 Selected product                                        Cola
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Stock                                            {[Cola, 1]}
+
 insert coin: quarter
 
 VendingMachine
 Display                                                $0.75
 Balance                                                   75
-Returns                                                     
+Coins                                           [25, 25, 25]
 Selected product                                        Cola
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Stock                                            {[Cola, 1]}
+
 insert coin: quarter
 
 VendingMachine
 Display                                                $1.00
 Balance                                                  100
-Returns                                                     
+Coins                                       [25, 25, 25, 25]
 Selected product                                        Cola
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Stock                                            {[Cola, 1]}
+
 wait 5 seconds for display to refresh
 
 VendingMachine
 Display                                            THANK YOU
 Balance                                                    0
-Returns                                                     
-Selected product                                            
 Dispensed product                                       Cola
-Stock                                              [Cola, 0]
-Banked Coins                                  25, 25, 25, 25
+Stock                                            {[Cola, 0]}
+Banked Coins                                [25, 25, 25, 25]
+
 wait 5 seconds for display to refresh
 
 VendingMachine
 Display                                    EXACT CHANGE ONLY
 Balance                                                    0
-Returns                                                     
-Selected product                                            
-Dispensed product                                           
-Stock                                              [Cola, 0]
-Banked Coins                                  25, 25, 25, 25
+Stock                                            {[Cola, 0]}
+Banked Coins                                [25, 25, 25, 25]

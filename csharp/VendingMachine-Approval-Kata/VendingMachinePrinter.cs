@@ -22,29 +22,44 @@ public class VendingMachinePrinter
             whiteSpace += " ";
         }
 
-        return name + whiteSpace + value;
+        return name + whiteSpace + value + "\n";
+    }
+    
+
+    private string format(List<int> value)
+    {
+        return "[" + string.Join(", ", value) + "]";
+    }
+    
+    private string format(Dictionary<string, int> value)
+    {
+        return "{" + string.Join(", ", value) + "}";
     }
 
-    private String Line(String name, List<int> value)
-    {
-        return Line(name, string.Join(", ", value));
-    }
 
-    private String Line(String name, Dictionary<string, int> value)
-    {
-        return Line(name, string.Join(", ", value));
-    }
 
-    public string PrintEverything()
+    public string PrintEverything(bool includeEmpty=true)
     {
-        return $@"VendingMachine
-{Line("Display", _machine.Display)}
-{Line("Balance", "" + _machine.Balance)}
-{Line("Returns", _machine.Returns)}
-{Line("Selected product", "" + _machine.SelectedProduct)}
-{Line("Dispensed product", "" + _machine.DispensedProduct)}
-{Line("Stock", _machine.Stock)}
-{Line("Banked Coins", _machine.Bank)}
-";
+        var fields = new Dictionary<string, string>
+        {
+            {"Display", _machine.Display},
+            {"Balance", "" + _machine.Balance},
+            {"Coins", format(_machine.Coins)},
+            {"Returns", format(_machine.Returns)},
+            {"Selected product", "" + _machine.SelectedProduct},
+            {"Dispensed product", "" + _machine.DispensedProduct},
+            {"Stock", format(_machine.Stock)},
+            {"Banked Coins", format(_machine.Bank)},
+        };
+        var text = "VendingMachine\n";
+        foreach (var field in fields)
+        {
+            if (includeEmpty || (field.Value != "" && field.Value != "{}" && field.Value != "[]"))
+            {
+                text += $@"{Line(field.Key, field.Value)}";
+            }
+        }
+
+        return text;
     }
 }

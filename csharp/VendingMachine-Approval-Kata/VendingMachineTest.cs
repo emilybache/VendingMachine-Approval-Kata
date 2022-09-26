@@ -3,7 +3,7 @@
 namespace VendingMachine_Approval_Kata;
 
 [UsesVerify]
-public class VendingMachineTest
+public partial class VendingMachineTest
 {
     private readonly Dictionary<string, int> _coins = new()
     {
@@ -17,26 +17,9 @@ public class VendingMachineTest
     private readonly VendingMachinePrinter _printer;
     private readonly Story _story;
 
-    class Story
-    {
-        private string _toVerify = "";
-        private VendingMachinePrinter _printer;
-
-        public Story(VendingMachinePrinter printer) => _printer = printer;
-        public void Init(string name) => _toVerify += $"{name}\n\n";
-
-        public void Arrange() =>
-            _toVerify += _printer.PrintEverything();
-
-        public void Act(string action) =>
-            _toVerify += $"{action}\n\n{_printer.PrintEverything()}";
-
-        public override string ToString() => _toVerify;
-    }
-
     public VendingMachineTest()
     {
-        _machine = new("", new Dictionary<string, int> { { "Cola", 1 } });
+        _machine = new("", new Dictionary<string, int> {  });
         _printer = new(_machine);
         _story = new Story(_printer);
     }
@@ -84,10 +67,27 @@ public class VendingMachineTest
     {
         _story.Init("Feature: Pay for product");
         _machine.SelectedProduct = "Cola";
+        _machine.Stock = new Dictionary<string, int> { { "Cola", 1 } };
         _story.Arrange();
 
         _story.Act(insert_coin("quarter"));
         _story.Act(insert_coin("quarter"));
+        _story.Act(insert_coin("quarter"));
+        _story.Act(insert_coin("quarter"));
+        _story.Act(Wait5Secs());
+        _story.Act(Wait5Secs());
+        
+        return Verify(_story.ToString());
+    }    
+    
+    [Fact]
+    public Task pay_for_chips()
+    {
+        _story.Init("Feature: Pay for Chips");
+        _machine.SelectedProduct = "Chips";
+        _machine.Stock = new Dictionary<string, int> { { "Cola", 1 }, { "Chips", 1 } };
+        _story.Arrange();
+
         _story.Act(insert_coin("quarter"));
         _story.Act(insert_coin("quarter"));
         _story.Act(Wait5Secs());

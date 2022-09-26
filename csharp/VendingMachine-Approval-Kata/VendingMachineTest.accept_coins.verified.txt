@@ -3,38 +3,30 @@
 VendingMachine
 Display                                    EXACT CHANGE ONLY
 Balance                                                    0
-Returns                                                     
+Coins                                                     []
+Returns                                                   []
 Selected product                                            
 Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Stock                                                     {}
+Banked Coins                                              []
+
 insert coin: nickel
 
 VendingMachine
 Display                                                $0.05
 Balance                                                    5
-Returns                                                     
-Selected product                                            
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Coins                                                    [5]
+
 insert coin: dime
 
 VendingMachine
 Display                                                $0.15
 Balance                                                   15
-Returns                                                     
-Selected product                                            
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Coins                                                [5, 10]
+
 insert coin: quarter
 
 VendingMachine
 Display                                                $0.40
 Balance                                                   40
-Returns                                                     
-Selected product                                            
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Coins                                            [5, 10, 25]

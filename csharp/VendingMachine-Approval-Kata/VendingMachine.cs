@@ -6,7 +6,7 @@ public class VendingMachine
 {
     private readonly List<int> _acceptedCoins = new() { 5, 10, 25 };
     public List<int> Bank { get; } = new();
-    private List<int> _coins = new();
+    public List<int> Coins { get; } = new();
     public string? DispensedProduct = "";
 
     private Dictionary<string, int> _prices = new()
@@ -18,7 +18,7 @@ public class VendingMachine
 
     public List<int> Returns { get; private set; } = new();
     public string? SelectedProduct { get; set; }
-    public Dictionary<string, int> Stock { get; }
+    public Dictionary<string, int> Stock { get; set; }
 
     public VendingMachine(string selectedProduct, Dictionary<string, int> stock)
     {
@@ -45,17 +45,13 @@ public class VendingMachine
         else
             Display = "EXACT CHANGE ONLY";
     }
-
-    public int[] Coins()
-    {
-        return _coins.ToArray();
-    }
+    
 
     public void InsertCoin(int coin)
     {
         if (_acceptedCoins.Contains(coin))
         {
-            _coins.Add(coin);
+            Coins.Add(coin);
             Balance += coin;
             DisplayBalance();
         }
@@ -93,12 +89,12 @@ public class VendingMachine
             Display = "THANK YOU";
             DispensedProduct = SelectedProduct;
             Balance -= _prices[SelectedProduct];
-            foreach (var coin in _coins)
+            foreach (var coin in Coins)
             {
                 Bank.Add(coin);
             }
 
-            _coins = new List<int>();
+            Coins.Clear();
             if (Balance > 0)
             {
                 var change = GetChangeRequired(Balance);
@@ -145,8 +141,8 @@ public class VendingMachine
     public void ReturnCoins()
     {
         Balance = 0;
-        Returns = _coins;
-        _coins = new List<int>();
+        Returns = Coins;
+        Coins.Clear();
         DisplayBalance();
     }
 

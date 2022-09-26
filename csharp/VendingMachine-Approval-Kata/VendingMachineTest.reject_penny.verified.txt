@@ -3,18 +3,16 @@
 VendingMachine
 Display                                    EXACT CHANGE ONLY
 Balance                                                    0
-Returns                                                     
+Coins                                                     []
+Returns                                                   []
 Selected product                                            
 Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Stock                                                     {}
+Banked Coins                                              []
+
 insert coin: penny
 
 VendingMachine
 Display                                    EXACT CHANGE ONLY
 Balance                                                    0
-Returns                                                    1
-Selected product                                            
-Dispensed product                                           
-Stock                                              [Cola, 1]
-Banked Coins                                                
+Returns                                                  [1]
