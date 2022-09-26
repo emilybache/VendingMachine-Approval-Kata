@@ -11,7 +11,7 @@ Banked Coins
 insert coin: quarter
 
 VendingMachine
-Display                                                   25
+Display                                                $0.25
 Balance                                                   25
 Returns                                                     
 Selected product                                        Cola
@@ -21,7 +21,7 @@ Banked Coins
 insert coin: quarter
 
 VendingMachine
-Display                                                   50
+Display                                                $0.50
 Balance                                                   50
 Returns                                                     
 Selected product                                        Cola
@@ -31,7 +31,7 @@ Banked Coins
 insert coin: quarter
 
 VendingMachine
-Display                                                   75
+Display                                                $0.75
 Balance                                                   75
 Returns                                                     
 Selected product                                        Cola
@@ -41,7 +41,7 @@ Banked Coins
 insert coin: quarter
 
 VendingMachine
-Display                                                  100
+Display                                                $1.00
 Balance                                                  100
 Returns                                                     
 Selected product                                        Cola

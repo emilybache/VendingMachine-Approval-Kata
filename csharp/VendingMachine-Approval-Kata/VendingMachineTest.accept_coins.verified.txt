@@ -11,7 +11,7 @@ Banked Coins
 insert coin: nickel
 
 VendingMachine
-Display                                                    5
+Display                                                $0.05
 Balance                                                    5
 Returns                                                     
 Selected product                                            
@@ -21,7 +21,7 @@ Banked Coins
 insert coin: dime
 
 VendingMachine
-Display                                                   15
+Display                                                $0.15
 Balance                                                   15
 Returns                                                     
 Selected product                                            
@@ -31,7 +31,7 @@ Banked Coins
 insert coin: quarter
 
 VendingMachine
-Display                                                   40
+Display                                                $0.40
 Balance                                                   40
 Returns                                                     
 Selected product                                            

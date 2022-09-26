@@ -11,7 +11,7 @@ Banked Coins
 select product: Cola
 
 VendingMachine
-Display                                           PRICE 1,00
+Display                                          PRICE $1.00
 Balance                                                    0
 Returns                                                     
 Selected product                                        Cola
@@ -31,7 +31,7 @@ Banked Coins
 select product: Chips
 
 VendingMachine
-Display                                            PRICE ,50
+Display                                          PRICE $0.50
 Balance                                                    0
 Returns                                                     
 Selected product                                       Chips

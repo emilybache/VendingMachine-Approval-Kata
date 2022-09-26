@@ -1,15 +1,20 @@
-﻿namespace VendingMachine_Approval_Kata;
+﻿using System.Globalization;
+
+namespace VendingMachine_Approval_Kata;
 
 public class VendingMachine
 {
-    private readonly List<int> _acceptedCoins = new () {5, 10 ,25};
+    private readonly List<int> _acceptedCoins = new() { 5, 10, 25 };
     public List<int> Bank { get; } = new();
     private List<int> _coins = new();
     public string? DispensedProduct = "";
+
     private Dictionary<string, int> _prices = new()
     {
         { "Cola", 100 }, { "Chips", 50 }, { "Candy", 65 }
     };
+
+    private readonly CultureInfo _en_Us_Culture;
 
     public List<int> Returns { get; private set; } = new();
     public string? SelectedProduct { get; set; }
@@ -21,6 +26,8 @@ public class VendingMachine
         Balance = 0;
         Stock = stock;
         SelectedProduct = selectedProduct;
+        _en_Us_Culture = CultureInfo.CreateSpecificCulture("en-US");
+
         DisplayBalance();
     }
 
@@ -30,7 +37,9 @@ public class VendingMachine
     private void DisplayBalance()
     {
         if (Balance != 0)
-            Display = "" + Balance;
+        {
+            Display = FormatAsDollars(Balance);
+        }
         else if (HasChange())
             Display = "INSERT COIN";
         else
@@ -66,9 +75,14 @@ public class VendingMachine
         else
         {
             var cost = _prices[product];
-            var cent = Convert.ToDecimal(cost) / 100;
-            Display = $"PRICE {cent:#.00}";
+            var dollars = FormatAsDollars(cost);
+            Display = $"PRICE {dollars}";
         }
+    }
+
+    private string FormatAsDollars(int cents)
+    {
+        return (cents / 100.0).ToString("C", _en_Us_Culture);
     }
 
     private void DispenseProduct()
@@ -83,6 +97,7 @@ public class VendingMachine
             {
                 Bank.Add(coin);
             }
+
             _coins = new List<int>();
             if (Balance > 0)
             {
