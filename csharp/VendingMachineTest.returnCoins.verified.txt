@@ -1,0 +1,14 @@
+﻿Feature: Return Coins
+
+VendingMachine
+Display                                                $0.30
+Balance                                                   30
+Coins                                                [25, 5]
+Returns                                                   []
+
+Return coins
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Returns                                              [25, 5]

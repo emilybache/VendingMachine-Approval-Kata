@@ -1,0 +1,14 @@
+﻿Feature: Reject penny
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+
+insert coin: penny
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Returns                                                  [1]
