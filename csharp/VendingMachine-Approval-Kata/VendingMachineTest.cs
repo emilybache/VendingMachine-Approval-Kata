@@ -95,6 +95,23 @@ public partial class VendingMachineTest
         
         return Verify(_story.ToString());
     }
+    
+    [Fact]
+    public Task pay_then_select()
+    {
+        _story.Init("Feature: Pay first then select product");
+        _machine.Stock = new Dictionary<string, int> { { "Chips", 1 }, {"Candy", 1} };
+        insert_coin("quarter");
+        insert_coin("quarter");
+        insert_coin("nickel");
+        insert_coin("dime");
+        _story.Arrange();
+
+        _story.Act(SelectProduct("Candy"));
+        _story.Act(Wait5Secs());
+
+        return Verify(_story.ToString());
+    }
 
     private string SelectProduct(string product)
     {
