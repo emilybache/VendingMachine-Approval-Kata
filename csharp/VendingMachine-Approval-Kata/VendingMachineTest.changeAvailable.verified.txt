@@ -1,0 +1,11 @@
+﻿Feature: Change Is Available
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                            
+Dispensed product                                           
+Stock                                                     {}
+Banked Coins                                     [25, 10, 5]

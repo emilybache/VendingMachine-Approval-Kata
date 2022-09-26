@@ -139,6 +139,16 @@ public partial class VendingMachineTest
         _story.Act(ReturnCoins());
 
         return Verify(_story.ToString());
+    }    
+    
+    [Fact]
+    public Task changeAvailable()
+    {
+        _story.Init("Feature: Change Is Available");
+        _machine.BankCoins(25, 10, 5);
+        _story.Arrange();
+        
+        return Verify(_story.ToString());
     }
 
     private string SelectProduct(string product)

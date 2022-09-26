@@ -160,4 +160,13 @@ public class VendingMachine
         // TODO: don't fake this one!
         return new List<int> { 10, 5 };
     }
+
+    public void BankCoins(params int[] coins)
+    {
+        foreach (var coin in coins)
+        {
+            Bank.Add(coin);
+        }
+        DisplayBalance();
+    }
 }
