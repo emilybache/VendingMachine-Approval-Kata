@@ -141,7 +141,7 @@ public class VendingMachine
     public void ReturnCoins()
     {
         Balance = 0;
-        Returns = Coins;
+        Returns.AddRange(Coins);
         Coins.Clear();
         DisplayBalance();
     }

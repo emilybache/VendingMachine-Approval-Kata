@@ -112,6 +112,34 @@ public partial class VendingMachineTest
 
         return Verify(_story.ToString());
     }
+    
+    [Fact]
+    public Task sold_out()
+    {
+        _story.Init("Feature: Sold out");
+        _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, {"Candy", 1} };
+        insert_coin("quarter");
+        insert_coin("quarter");
+        _story.Arrange();
+
+        _story.Act(SelectProduct("Chips"));
+        _story.Act(Wait5Secs());
+
+        return Verify(_story.ToString());
+    }    
+    
+    [Fact]
+    public Task returnCoins()
+    {
+        _story.Init("Feature: Return Coins");
+        insert_coin("quarter");
+        insert_coin("nickel");
+        _story.Arrange();
+
+        _story.Act(ReturnCoins());
+
+        return Verify(_story.ToString());
+    }
 
     private string SelectProduct(string product)
     {
