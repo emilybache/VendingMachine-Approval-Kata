@@ -150,6 +150,23 @@ public partial class VendingMachineTest
         
         return Verify(_story.ToString());
     }
+    
+    [Fact]
+    public Task giveChange()
+    {
+        _story.Init("Feature: Change Is Returned following Purchase");
+        _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, {"Candy", 1} };
+        _machine.BankCoins(25, 10, 5);
+        _machine.InsertCoin(25);
+        _machine.InsertCoin(25);
+        _machine.InsertCoin(25);
+        _story.Arrange();
+        
+        _story.Act(SelectProduct("Candy"));
+        _story.Act(Wait5Secs());
+        
+        return Verify(_story.ToString());
+    }
 
     private string SelectProduct(string product)
     {
