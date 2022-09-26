@@ -1,0 +1,25 @@
+﻿Feature: Pay first then select product
+
+VendingMachine
+Display                                                $0.65
+Balance                                                   65
+Coins                                        [25, 25, 5, 10]
+Returns                                                   []
+Selected product                                            
+Dispensed product                                           
+Stock                               {[Chips, 1], [Candy, 1]}
+
+select product: Candy
+
+VendingMachine
+Display                                            THANK YOU
+Balance                                                    0
+Dispensed product                                      Candy
+Stock                               {[Chips, 1], [Candy, 0]}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Stock                               {[Chips, 1], [Candy, 0]}

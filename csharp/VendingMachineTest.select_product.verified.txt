@@ -1,0 +1,38 @@
+﻿Feature: Select product and see price
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                            
+Dispensed product                                           
+Stock                                                     {}
+
+select product: Cola
+
+VendingMachine
+Display                                          PRICE $1.00
+Balance                                                    0
+Selected product                                        Cola
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Selected product                                        Cola
+
+select product: Chips
+
+VendingMachine
+Display                                          PRICE $0.50
+Balance                                                    0
+Selected product                                       Chips
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Selected product                                       Chips

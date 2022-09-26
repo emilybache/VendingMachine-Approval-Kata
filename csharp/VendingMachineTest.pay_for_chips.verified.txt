@@ -1,0 +1,43 @@
+﻿Feature: Pay for Chips
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                       Chips
+Dispensed product                                           
+Stock                                {[Cola, 1], [Chips, 1]}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.25
+Balance                                                   25
+Coins                                                   [25]
+Selected product                                       Chips
+Stock                                {[Cola, 1], [Chips, 1]}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.50
+Balance                                                   50
+Coins                                               [25, 25]
+Selected product                                       Chips
+Stock                                {[Cola, 1], [Chips, 1]}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                            THANK YOU
+Balance                                                    0
+Dispensed product                                      Chips
+Stock                                {[Cola, 1], [Chips, 0]}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Stock                                {[Cola, 1], [Chips, 0]}

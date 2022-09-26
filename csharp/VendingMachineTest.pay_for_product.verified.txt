@@ -1,0 +1,61 @@
+﻿Feature: Pay for product
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                            {[Cola, 1]}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.25
+Balance                                                   25
+Coins                                                   [25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.50
+Balance                                                   50
+Coins                                               [25, 25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.75
+Balance                                                   75
+Coins                                           [25, 25, 25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $1.00
+Balance                                                  100
+Coins                                       [25, 25, 25, 25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                            THANK YOU
+Balance                                                    0
+Dispensed product                                       Cola
+Stock                                            {[Cola, 0]}
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Stock                                            {[Cola, 0]}
