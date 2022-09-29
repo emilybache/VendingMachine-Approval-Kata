@@ -2,7 +2,7 @@ using System.Globalization;
 
 namespace VendingMachine_Approval_Kata;
 
-public class VendingMachine_v2
+public class VendingMachine_v3
 {
     public List<int> Coins { get; } = new();
     public List<int> Returns { get; } = new();
@@ -16,7 +16,7 @@ public class VendingMachine_v2
         5, 10, 25
     };
 
-    public VendingMachine_v2()
+    public VendingMachine_v3()
     {
         Display = "";
         _en_Us_Culture = CultureInfo.CreateSpecificCulture("en-US");
@@ -47,4 +47,13 @@ public class VendingMachine_v2
             Returns.Add(coin);
         }
     }
+
+    public void ReturnCoins()
+    {
+        Balance = 0;
+        Returns.AddRange(Coins);
+        Coins.Clear();
+        DisplayBalance();
+    }
+
 }

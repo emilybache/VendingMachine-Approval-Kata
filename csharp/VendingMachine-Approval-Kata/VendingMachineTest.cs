@@ -24,6 +24,6 @@ public class VendingMachineTest
 
         Equal(5, machine.Balance);
         Equal(new List<int> { 5 }, machine.Coins);
-        Equal("5", machine.Display);
+        Equal("$0.05", machine.Display);
     }
 }
