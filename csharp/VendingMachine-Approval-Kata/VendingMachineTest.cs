@@ -15,7 +15,7 @@ public class VendingMachineTest
     [Fact]
     public void test_accept_coins()
     {
-        // TODO: use the printer and Approvals.verify instead of assertions
+        // TODO: use the printer and Verifier.Verify instead of assertions
         var machine = new VendingMachine();
 
         Equal("INSERT COIN", machine.Display);
