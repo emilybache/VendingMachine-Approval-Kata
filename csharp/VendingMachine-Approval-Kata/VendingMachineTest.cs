@@ -19,7 +19,7 @@ public partial class VendingMachineTest
 
     public VendingMachineTest()
     {
-        _machine = new("", new Dictionary<string, int> {  });
+        _machine = new VendingMachine_exercise0("", new Dictionary<string, int> {  });
         _printer = new(_machine);
         _story = new Story(_printer);
     }

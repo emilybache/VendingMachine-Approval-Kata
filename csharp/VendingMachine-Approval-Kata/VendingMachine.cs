@@ -4,19 +4,19 @@ namespace VendingMachine_Approval_Kata;
 
 public class VendingMachine
 {
-    private readonly List<int> _acceptedCoins = new() { 5, 10, 25 };
+    public List<int> AcceptedCoins { get; protected set; } = new() { 5, 10, 25 };
     public List<int> Bank { get; } = new();
     public List<int> Coins { get; } = new();
     public string? DispensedProduct = "";
 
-    private Dictionary<string, int> _prices = new()
+    protected Dictionary<string, int> _prices = new()
     {
         { "Cola", 100 }, { "Chips", 50 }, { "Candy", 65 }
     };
 
     private readonly CultureInfo _en_Us_Culture;
 
-    public List<int> Returns { get; private set; } = new();
+    public List<int> Returns { get; protected set; } = new();
     public string? SelectedProduct { get; set; }
     public Dictionary<string, int> Stock { get; set; }
 
@@ -31,10 +31,10 @@ public class VendingMachine
         DisplayBalance();
     }
 
-    public string Display { get; private set; }
-    public int Balance { get; private set; }
+    public string Display { get; protected set; }
+    public int Balance { get; protected set; }
 
-    private void DisplayBalance()
+    protected virtual void DisplayBalance()
     {
         if (Balance != 0)
         {
@@ -47,9 +47,9 @@ public class VendingMachine
     }
     
 
-    public void InsertCoin(int coin)
+    public virtual void InsertCoin(int coin)
     {
-        if (_acceptedCoins.Contains(coin))
+        if (AcceptedCoins.Contains(coin))
         {
             Coins.Add(coin);
             Balance += coin;
@@ -61,7 +61,7 @@ public class VendingMachine
         }
     }
 
-    public void SelectProduct(string product)
+    public virtual void SelectProduct(string product)
     {
         SelectedProduct = product;
         if (Balance >= _prices[SelectedProduct])
@@ -76,12 +76,12 @@ public class VendingMachine
         }
     }
 
-    private string FormatAsDollars(int cents)
+    protected string FormatAsDollars(int cents)
     {
         return (cents / 100.0).ToString("C", _en_Us_Culture);
     }
 
-    private void DispenseProduct()
+    protected virtual void DispenseProduct()
     {
         if (SelectedProduct != null && Stock[SelectedProduct] >= 1)
         {
@@ -112,7 +112,7 @@ public class VendingMachine
         }
     }
 
-    public void Tick()
+    public virtual void Tick()
     {
         if (Display.Contains("PRICE"))
         {
@@ -146,7 +146,7 @@ public class VendingMachine
         DisplayBalance();
     }
 
-    private bool HasChange()
+    protected bool HasChange()
     {
         return
             Bank.Contains(25)
@@ -155,13 +155,13 @@ public class VendingMachine
             ;
     }
 
-    private List<int> GetChangeRequired(int balance)
+    protected List<int> GetChangeRequired(int balance)
     {
         // TODO: don't fake this one!
         return new List<int> { 10, 5 };
     }
 
-    public void BankCoins(params int[] coins)
+    public virtual void BankCoins(params int[] coins)
     {
         foreach (var coin in coins)
         {
