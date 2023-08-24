@@ -1,0 +1,13 @@
+Initial state:
+Display:			INSERT COIN
+Balance:			0
+Coin Count:			0
+
+insert coin nickel
+
+Final state:
+Display:			$0.05
+Balance:			5
+Coin Count:			1
+5,
+

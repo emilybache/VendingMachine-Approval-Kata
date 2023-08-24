@@ -5,13 +5,23 @@
 
 void
 print_machine(const struct vending_machine* machine, char* buffer) {
-    // TODO: print some useful values instead of these example keys and values
     char line1[LINE_LENGTH];
-    char line2[LINE_LENGTH];
-    print_line(line1, "Key", "Value");
-    print_line(line2, "Other Key", "Another Value");
+    print_line(line1, "Display", machine->display);
 
-    sprintf(buffer, "%s\n%s%s", "VendingMachine", line1, line2);
+    char balance[LINE_LENGTH];
+    sprintf(balance, "%ld", machine->balance);
+    char line2[LINE_LENGTH];
+    print_line(line2, "Balance", balance);
+
+    char coin_count[LINE_LENGTH];
+    sprintf(coin_count, "%d", machine->coin_count);
+    char line3[LINE_LENGTH];
+    print_line(line3, "Coin Count", coin_count);
+
+    char coins_buffer[buffer_size_for_coins(machine->coin_count)];
+    print_coins(coins_buffer, machine->coins, machine->coin_count);
+
+    sprintf(buffer, "%s\n%s%s%s%s", "VendingMachine", line1, line2,line3,coins_buffer);
 }
 
 void

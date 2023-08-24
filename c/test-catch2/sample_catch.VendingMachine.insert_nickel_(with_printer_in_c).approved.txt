@@ -1,0 +1,5 @@
+VendingMachine
+Display                                               $0.05
+Balance                                                   5
+Coin Count                                                1
+{ 5, }
