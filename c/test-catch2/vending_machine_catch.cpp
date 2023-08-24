@@ -13,9 +13,10 @@ using namespace std;
 
 TEST_CASE ("VendingMachine") {
     auto machine = vending_machine_create();
-    CHECK("INSERT COIN" == string(machine->display));
 
     SECTION("insert nickel") {
+        CHECK("INSERT COIN" == string(machine->display));
+
         insert_coin(machine, coin_with_name("nickel"));
 
         CHECK("$0.05" == string(machine->display));
