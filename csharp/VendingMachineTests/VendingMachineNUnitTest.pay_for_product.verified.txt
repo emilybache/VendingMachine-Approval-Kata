@@ -1,0 +1,188 @@
+﻿Feature: Accept coins
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                            
+Dispensed product                                           
+Stock                                                     {}
+Banked Coins                                              []
+
+insert coin: nickel
+
+VendingMachine
+Display                                                $0.05
+Balance                                                    5
+Coins                                                    [5]
+
+insert coin: dime
+
+VendingMachine
+Display                                                $0.15
+Balance                                                   15
+Coins                                                [5, 10]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.40
+Balance                                                   40
+Coins                                            [5, 10, 25]
+Feature: Change Is Available
+
+VendingMachine
+Display                                                $0.40
+Balance                                                   40
+Coins                                            [5, 10, 25]
+Returns                                                   []
+Selected product                                            
+Dispensed product                                           
+Stock                                                     {}
+Banked Coins                                     [25, 10, 5]
+Feature: Change Is Returned following Purchase
+
+VendingMachine
+Display                                                $1.15
+Balance                                                  115
+Coins                                [5, 10, 25, 25, 25, 25]
+Returns                                                   []
+Selected product                                            
+Dispensed product                                           
+Stock                               {[Chips, 0], [Candy, 1]}
+Banked Coins                          [25, 10, 5, 25, 10, 5]
+
+select product: Candy
+
+VendingMachine
+Display                                            THANK YOU
+Balance                                                    0
+Returns                                              [10, 5]
+Dispensed product                                      Candy
+Stock                               {[Chips, 0], [Candy, 0]}
+Banked Coins          [25, 25, 10, 5, 5, 10, 25, 25, 25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Stock                               {[Chips, 0], [Candy, 0]}
+Banked Coins          [25, 25, 10, 5, 5, 10, 25, 25, 25, 25]
+Feature: Pay for Chips
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                       Chips
+Dispensed product                                           
+Stock                                {[Cola, 1], [Chips, 1]}
+Banked Coins          [25, 25, 10, 5, 5, 10, 25, 25, 25, 25]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.25
+Balance                                                   25
+Coins                                                   [25]
+Selected product                                       Chips
+Stock                                {[Cola, 1], [Chips, 1]}
+Banked Coins          [25, 25, 10, 5, 5, 10, 25, 25, 25, 25]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.50
+Balance                                                   50
+Coins                                               [25, 25]
+Selected product                                       Chips
+Stock                                {[Cola, 1], [Chips, 1]}
+Banked Coins          [25, 25, 10, 5, 5, 10, 25, 25, 25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                            THANK YOU
+Balance                                                    0
+Dispensed product                                      Chips
+Stock                                {[Cola, 1], [Chips, 0]}
+Banked Coins  [25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Stock                                {[Cola, 1], [Chips, 0]}
+Banked Coins  [25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25]
+Feature: Pay for product
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                        Cola
+Dispensed product                                           
+Stock                                            {[Cola, 1]}
+Banked Coins  [25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.25
+Balance                                                   25
+Coins                                                   [25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+Banked Coins  [25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.50
+Balance                                                   50
+Coins                                               [25, 25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+Banked Coins  [25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.75
+Balance                                                   75
+Coins                                           [25, 25, 25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+Banked Coins  [25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $1.00
+Balance                                                  100
+Coins                                       [25, 25, 25, 25]
+Selected product                                        Cola
+Stock                                            {[Cola, 1]}
+Banked Coins  [25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                            THANK YOU
+Balance                                                    0
+Dispensed product                                       Cola
+Stock                                            {[Cola, 0]}
+Banked Coins[25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25]
+
+wait 5 seconds for display to refresh
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Stock                                            {[Cola, 0]}
+Banked Coins[25, 25, 10, 5, 5, 10, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25]

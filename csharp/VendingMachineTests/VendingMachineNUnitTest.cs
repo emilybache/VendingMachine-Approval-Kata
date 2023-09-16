@@ -1,9 +1,10 @@
-﻿using static Xunit.Assert;
+using Verifier = VerifyNUnit.Verifier;
 
 namespace VendingMachine_Approval_Kata;
 
-[UsesVerify]
-public partial class VendingMachineTest
+using NUnit.Framework;
+
+public class VendingMachineNUnitTest
 {
     private readonly Dictionary<string, int> _coins = new()
     {
@@ -17,15 +18,15 @@ public partial class VendingMachineTest
     private readonly VendingMachinePrinter _printer;
     private readonly Story _story;
 
-    public VendingMachineTest()
+    public VendingMachineNUnitTest()
     {
-        _machine = new VendingMachine("", new Dictionary<string, int> {  });
+        _machine = new VendingMachine("", new Dictionary<string, int> { });
         _printer = new(_machine);
         _story = new Story(_printer);
     }
 
 
-    [Fact]
+    [Test]
     public Task accept_coins()
     {
         _story.Init("Feature: Accept coins");
@@ -35,9 +36,10 @@ public partial class VendingMachineTest
         _story.Act(insert_coin("dime"));
         _story.Act(insert_coin("quarter"));
 
-        return Verify(_story.ToString());
+        return Verifier.Verify(_story.ToString());
     }
-    [Fact]
+
+    [Test]
     public Task reject_penny()
     {
         _story.Init("Feature: Reject penny");
@@ -45,10 +47,10 @@ public partial class VendingMachineTest
 
         _story.Act(insert_coin("penny"));
 
-        return Verify(_story.ToString());
+        return Verifier.Verify(_story.ToString());
     }
-    
-    [Fact]
+
+    [Test]
     public Task select_product()
     {
         _story.Init("Feature: Select product and see price");
@@ -58,11 +60,11 @@ public partial class VendingMachineTest
         _story.Act(Wait5Secs());
         _story.Act(SelectProduct("Chips"));
         _story.Act(Wait5Secs());
-        
-        return Verify(_story.ToString());
+
+        return Verifier.Verify(_story.ToString());
     }
-    
-    [Fact]
+
+    [Test]
     public Task pay_for_product()
     {
         _story.Init("Feature: Pay for product");
@@ -76,11 +78,11 @@ public partial class VendingMachineTest
         _story.Act(insert_coin("quarter"));
         _story.Act(Wait5Secs());
         _story.Act(Wait5Secs());
-        
-        return Verify(_story.ToString());
-    }    
-    
-    [Fact]
+
+        return Verifier.Verify(_story.ToString());
+    }
+
+    [Test]
     public Task pay_for_chips()
     {
         _story.Init("Feature: Pay for Chips");
@@ -92,15 +94,15 @@ public partial class VendingMachineTest
         _story.Act(insert_coin("quarter"));
         _story.Act(Wait5Secs());
         _story.Act(Wait5Secs());
-        
-        return Verify(_story.ToString());
+
+        return Verifier.Verify(_story.ToString());
     }
-    
-    [Fact]
+
+    [Test]
     public Task pay_then_select()
     {
         _story.Init("Feature: Pay first then select product");
-        _machine.Stock = new Dictionary<string, int> { { "Chips", 1 }, {"Candy", 1} };
+        _machine.Stock = new Dictionary<string, int> { { "Chips", 1 }, { "Candy", 1 } };
         insert_coin("quarter");
         insert_coin("quarter");
         insert_coin("nickel");
@@ -110,14 +112,14 @@ public partial class VendingMachineTest
         _story.Act(SelectProduct("Candy"));
         _story.Act(Wait5Secs());
 
-        return Verify(_story.ToString());
+        return Verifier.Verify(_story.ToString());
     }
-    
-    [Fact]
+
+    [Test]
     public Task sold_out()
     {
         _story.Init("Feature: Sold out");
-        _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, {"Candy", 1} };
+        _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, { "Candy", 1 } };
         insert_coin("quarter");
         insert_coin("quarter");
         _story.Arrange();
@@ -125,10 +127,10 @@ public partial class VendingMachineTest
         _story.Act(SelectProduct("Chips"));
         _story.Act(Wait5Secs());
 
-        return Verify(_story.ToString());
-    }    
-    
-    [Fact]
+        return Verifier.Verify(_story.ToString());
+    }
+
+    [Test]
     public Task returnCoins()
     {
         _story.Init("Feature: Return Coins");
@@ -138,34 +140,34 @@ public partial class VendingMachineTest
 
         _story.Act(ReturnCoins());
 
-        return Verify(_story.ToString());
-    }    
-    
-    [Fact]
+        return Verifier.Verify(_story.ToString());
+    }
+
+    [Test]
     public Task changeAvailable()
     {
         _story.Init("Feature: Change Is Available");
         _machine.BankCoins(25, 10, 5);
         _story.Arrange();
-        
-        return Verify(_story.ToString());
+
+        return Verifier.Verify(_story.ToString());
     }
-    
-    [Fact]
+
+    [Test]
     public Task giveChange()
     {
         _story.Init("Feature: Change Is Returned following Purchase");
-        _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, {"Candy", 1} };
+        _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, { "Candy", 1 } };
         _machine.BankCoins(25, 10, 5);
         _machine.InsertCoin(25);
         _machine.InsertCoin(25);
         _machine.InsertCoin(25);
         _story.Arrange();
-        
+
         _story.Act(SelectProduct("Candy"));
         _story.Act(Wait5Secs());
-        
-        return Verify(_story.ToString());
+
+        return Verifier.Verify(_story.ToString());
     }
 
     private string SelectProduct(string product)
@@ -173,11 +175,13 @@ public partial class VendingMachineTest
         _machine.SelectProduct(product);
         return $"select product: {product}";
     }
+
     private string Wait5Secs()
     {
         _machine.Tick();
         return "wait 5 seconds for display to refresh";
     }
+
     private string ReturnCoins()
     {
         _machine.ReturnCoins();
