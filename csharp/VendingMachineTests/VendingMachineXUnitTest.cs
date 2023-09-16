@@ -2,7 +2,7 @@
 
 namespace VendingMachine_Approval_Kata;
 
-public class VendingMachineTest
+public class VendingMachineXUnitTest
 {
     public readonly Dictionary<string, int> Coins = new()
     {
