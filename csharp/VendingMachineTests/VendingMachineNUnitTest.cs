@@ -14,11 +14,12 @@ public class VendingMachineNUnitTest
         { "quarter", 25 }
     };
 
-    private readonly VendingMachine _machine;
-    private readonly VendingMachinePrinter _printer;
-    private readonly Story _story;
+    private VendingMachine _machine;
+    private VendingMachinePrinter _printer;
+    private Story _story;
 
-    public VendingMachineNUnitTest()
+    [SetUp]
+    public void SetUp()
     {
         _machine = new VendingMachine("", new Dictionary<string, int> { });
         _printer = new(_machine);
