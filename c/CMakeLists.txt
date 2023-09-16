@@ -1,8 +1,8 @@
-cmake_minimum_required(VERSION 3.16)
+cmake_minimum_required(VERSION 3.14 FATAL_ERROR)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 project(VendingMachine VERSION 1.0)
 
-set(CMAKE_C_STANDARD 99)
+set(CMAKE_C_STANDARD 11)
 
 # uncomment these lines to enable coverage measurements using gcov
 #set(CMAKE_CXX_FLAGS "--coverage")
