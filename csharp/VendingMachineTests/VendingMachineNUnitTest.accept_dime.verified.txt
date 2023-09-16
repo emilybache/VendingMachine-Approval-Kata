@@ -1,0 +1,13 @@
+﻿Feature: Dime is accepted
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+
+insert coin: dime
+
+VendingMachine
+Display                                                $0.10
+Balance                                                   10
+Coins                                                   [10]

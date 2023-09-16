@@ -1,30 +1,112 @@
-using Assert = NUnit.Framework.Assert;
+using Verifier = VerifyNUnit.Verifier;
 
 namespace VendingMachine_Approval_Kata;
 
+using NUnit.Framework;
+
 public class VendingMachineNUnitTest
 {
-    public readonly Dictionary<string, int> Coins = new()
+    private readonly Dictionary<string, int> _coins = new()
     {
         { "penny", 1 },
         { "nickel", 5 },
         { "dime", 10 },
-        { "quarter", 25 },
+        { "quarter", 25 }
     };
 
-    [Fact]
-    public void test_accept_coins()
+    private VendingMachine _machine;
+    private VendingMachinePrinter _printer;
+    private Story _story;
+
+    [SetUp]
+    public void SetUp()
     {
-        // TODO: use the printer and Verifier.Verify instead of assertions
-        var machine = new VendingMachine();
-
-        Assert.AreEqual("INSERT COIN", machine.Display);
-
-        machine.InsertCoin(Coins["nickel"]);
-
-        Assert.AreEqual(5, machine.Balance);
-        Assert.AreEqual(new List<int> { 5 }, machine.Coins);
-        Assert.AreEqual("$0.05", machine.Display);
+        _machine = new VendingMachine();
+        _printer = new(_machine);
+        _story = new Story(_printer);
     }
 
+
+    [Test]
+    public Task accept_nickel()
+    {
+        _story.Init("Feature: Nickel is accepted");
+        _story.Arrange();
+
+        _story.Act(insert_coin("nickel"));
+
+        return Verifier.Verify(_story.ToString());
+    }
+   [Test]
+    public Task accept_dime()
+    {
+        _story.Init("Feature: Dime is accepted");
+        _story.Arrange();
+
+        _story.Act(insert_coin("dime"));
+
+        return Verifier.Verify(_story.ToString());
+    }
+   [Test]
+    public Task accept_quarter()
+    {
+        _story.Init("Feature: Accept Quarter");
+        _story.Arrange();
+
+        _story.Act(insert_coin("quarter"));
+
+        return Verifier.Verify(_story.ToString());
+    }
+   [Test]
+    public Task accept_several_coins()
+    {
+        _story.Init("Feature: Accept several coins");
+        _story.Arrange();
+
+        _story.Act(insert_coin("nickel"));
+        _story.Act(insert_coin("quarter"));
+        _story.Act(insert_coin("dime"));
+        _story.Act(insert_coin("nickel"));
+        _story.Act(insert_coin("quarter"));
+
+        return Verifier.Verify(_story.ToString());
+    }
+
+    //[Test]
+    public Task reject_penny()
+    {
+        _story.Init("Feature: Reject penny");
+        _story.Arrange();
+
+        _story.Act(insert_coin("penny"));
+
+        return Verifier.Verify(_story.ToString());
+    }
+    
+    
+
+    //[Test]
+    public Task return_coins()
+    {
+        _story.Init("Feature: Return Coins");
+        insert_coin("quarter");
+        insert_coin("nickel");
+        _story.Arrange();
+
+        _story.Act(ReturnCoins());
+
+        return Verifier.Verify(_story.ToString());
+    }
+
+    private string insert_coin(string coinName)
+    {
+        _machine.InsertCoin(_coins[coinName]);
+        return $"insert coin: {coinName}";
+    }
+
+    private string ReturnCoins()
+    {
+        //_machine.ReturnCoins();
+        return "Return coins";
+    }
 }

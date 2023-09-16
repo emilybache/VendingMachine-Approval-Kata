@@ -9,7 +9,7 @@ public class VendingMachine
     public int Balance { get; private set; }
 
     private readonly CultureInfo _en_Us_Culture;
-    
+
     public VendingMachine()
     {
         Display = "";

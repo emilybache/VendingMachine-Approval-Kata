@@ -1,0 +1,41 @@
+﻿Feature: Accept several coins
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+
+insert coin: nickel
+
+VendingMachine
+Display                                                $0.05
+Balance                                                    5
+Coins                                                    [5]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.30
+Balance                                                   30
+Coins                                                [5, 25]
+
+insert coin: dime
+
+VendingMachine
+Display                                                $0.40
+Balance                                                   40
+Coins                                            [5, 25, 10]
+
+insert coin: nickel
+
+VendingMachine
+Display                                                $0.45
+Balance                                                   45
+Coins                                         [5, 25, 10, 5]
+
+insert coin: quarter
+
+VendingMachine
+Display                                                $0.70
+Balance                                                   70
+Coins                                     [5, 25, 10, 5, 25]

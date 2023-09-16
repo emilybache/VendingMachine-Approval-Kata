@@ -1,0 +1,13 @@
+﻿Feature: Nickel is accepted
+
+VendingMachine
+Display                                          INSERT COIN
+Balance                                                    0
+Coins                                                     []
+
+insert coin: nickel
+
+VendingMachine
+Display                                                $0.05
+Balance                                                    5
+Coins                                                    [5]
