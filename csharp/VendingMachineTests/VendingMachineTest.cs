@@ -59,17 +59,15 @@ public class VendingMachineTest
         return Verifier.Verify(_story.ToString());
     }
    [Test]
-    public Task accept_several_coins()
+    public Task update_balance()
     {
-        _story.Init("Feature: Accept several coins");
+        _story.Init("Feature: Update balance displayed when coin inserted");
+        insert_coin("nickel");
+        insert_coin("quarter");
         _story.Arrange();
 
-        _story.Act(insert_coin("nickel"));
-        _story.Act(insert_coin("quarter"));
         _story.Act(insert_coin("dime"));
-        _story.Act(insert_coin("nickel"));
-        _story.Act(insert_coin("quarter"));
-
+        
         return Verifier.Verify(_story.ToString());
     }
 

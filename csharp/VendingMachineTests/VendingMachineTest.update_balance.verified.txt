@@ -1,0 +1,13 @@
+﻿Feature: Update balance displayed when coin inserted
+
+VendingMachine
+Display                                                $0.30
+Balance                                                   30
+Coins                                                [5, 25]
+
+insert coin: dime
+
+VendingMachine
+Display                                                $0.40
+Balance                                                   40
+Coins                                            [5, 25, 10]
