@@ -1,4 +1,4 @@
-﻿Feature: Accept Quarter
+﻿Feature: Quarter is accepted
 
 VendingMachine
 Display                                          INSERT COIN

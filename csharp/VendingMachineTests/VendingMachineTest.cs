@@ -1,10 +1,11 @@
+using VendingMachine_Approval_Kata;
 using Verifier = VerifyNUnit.Verifier;
 
-namespace VendingMachine_Approval_Kata;
+namespace VendingMachineTests;
 
 using NUnit.Framework;
 
-public class VendingMachineNUnitTest
+public class VendingMachineTest
 {
     private readonly Dictionary<string, int> _coins = new()
     {
@@ -50,7 +51,7 @@ public class VendingMachineNUnitTest
    [Test]
     public Task accept_quarter()
     {
-        _story.Init("Feature: Accept Quarter");
+        _story.Init("Feature: Quarter is accepted");
         _story.Arrange();
 
         _story.Act(insert_coin("quarter"));

@@ -1,4 +1,6 @@
-namespace VendingMachine_Approval_Kata;
+using VendingMachine_Approval_Kata;
+
+namespace VendingMachineTests;
 
 public class Story
 {

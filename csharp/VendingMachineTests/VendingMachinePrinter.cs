@@ -1,6 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using VendingMachine_Approval_Kata;
 
-namespace VendingMachine_Approval_Kata;
+namespace VendingMachineTests;
 
 public class VendingMachinePrinter
 {
