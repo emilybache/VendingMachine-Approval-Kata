@@ -13,6 +13,23 @@ public class VendingMachinePrinter
         _machine = machine;
     }
 
+    public string Print()
+    {
+        var fields = new Dictionary<string, string>
+        {
+            {"Display", _machine.Display},
+            {"Balance", "" + _machine.Balance},
+            {"Coins", format(_machine.Coins)},
+        };
+        var text = "VendingMachine\n";
+        foreach (var field in fields)
+        {
+            text += $@"{Line(field.Key, field.Value)}";
+        }
+
+        return text;
+    }
+
     private String Line(String name, String value)
     {
         int whitespaceSize = _columns - name.Length - value.Length;
@@ -24,31 +41,14 @@ public class VendingMachinePrinter
 
         return name + whiteSpace + value + "\n";
     }
+
     private string format(List<int> value)
     {
         return "[" + string.Join(", ", value) + "]";
     }
-    
+
     private string format(Dictionary<string, int> value)
     {
         return "{" + string.Join(", ", value) + "}";
-    }
-    
-    public string Print()
-    {
-        var fields = new Dictionary<string, string>
-        {
-            {"Display", _machine.Display},
-            {"Balance", "" + _machine.Balance},
-            {"Coins", format(_machine.Coins)},
-            //{"Returns", format(_machine.Returns)},
-        };
-        var text = "VendingMachine\n";
-        foreach (var field in fields)
-        {
-            text += $@"{Line(field.Key, field.Value)}";
-        }
-
-        return text;
     }
 }
