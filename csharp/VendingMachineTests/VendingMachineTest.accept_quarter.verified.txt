@@ -4,6 +4,7 @@ VendingMachine
 Display                                          INSERT COIN
 Balance                                                    0
 Coins                                                     []
+Returns                                                   []
 
 insert coin: quarter
 
@@ -11,3 +12,4 @@ VendingMachine
 Display                                                $0.25
 Balance                                                   25
 Coins                                                   [25]
+Returns                                                   []

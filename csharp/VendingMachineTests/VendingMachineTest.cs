@@ -71,7 +71,7 @@ public class VendingMachineTest
         return Verifier.Verify(_story.ToString());
     }
 
-    //[Test]
+    [Test]
     public Task reject_penny()
     {
         _story.Init("Feature: Reject penny");

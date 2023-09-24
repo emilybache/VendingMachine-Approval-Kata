@@ -8,6 +8,9 @@ public class VendingMachine
     public string Display { get; private set; }
     public int Balance { get; private set; }
 
+    public List<int> Returns { get; private set; } = new();
+
+
     private readonly CultureInfo _en_Us_Culture;
 
     public VendingMachine()
@@ -30,8 +33,18 @@ public class VendingMachine
 
     public void InsertCoin(int coin)
     {
-        Coins.Add(coin);
-        Balance += coin;
-        DisplayBalance();
+        var acceptedCoins = new List<int>() { 5, 10, 25 };
+
+        if (acceptedCoins.Contains(coin))
+        {
+            Coins.Add(coin);
+            Balance += coin;
+            DisplayBalance();
+        }
+        else
+        {
+            Returns.Add(coin);
+        }
     }
+
 }

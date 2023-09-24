@@ -20,6 +20,7 @@ public class VendingMachinePrinter
             {"Display", _machine.Display},
             {"Balance", "" + _machine.Balance},
             {"Coins", format(_machine.Coins)},
+            {"Returns", format(_machine.Returns)},
         };
         var text = "VendingMachine\n";
         foreach (var field in fields)

@@ -4,6 +4,7 @@ VendingMachine
 Display                                                $0.30
 Balance                                                   30
 Coins                                                [5, 25]
+Returns                                                   []
 
 insert coin: dime
 
@@ -11,3 +12,4 @@ VendingMachine
 Display                                                $0.40
 Balance                                                   40
 Coins                                            [5, 25, 10]
+Returns                                                   []
