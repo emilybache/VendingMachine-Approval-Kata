@@ -120,7 +120,7 @@ public class VendingMachineXUnitTest
     {
         _story.Init("Feature: Pay first then select product");
         _machine.Stock = new Dictionary<string, int> { { "Chips", 1 }, {"Candy", 1} };
-        _machine.InsertAllCoins(new List<int>() { 25, 25, 5, 10 });
+        _machine.InsertAllCoins(new int[] { 25, 25, 5, 10 });
         _story.Arrange();
 
         _story.Act(SelectProduct("Candy"));
@@ -134,7 +134,7 @@ public class VendingMachineXUnitTest
     {
         _story.Init("Feature: Sold out");
         _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, {"Candy", 1} };
-        _machine.InsertAllCoins(new List<int>() { 25, 25 });
+        _machine.InsertAllCoins(new int[] { 25, 25 });
         _story.Arrange();
 
         _story.Act(SelectProduct("Chips"));
@@ -147,7 +147,7 @@ public class VendingMachineXUnitTest
     public Task returnCoins()
     {
         _story.Init("Feature: Return Coins");
-        _machine.InsertAllCoins(new List<int>() { 25, 5 });
+        _machine.InsertAllCoins(new int[] { 25, 5 });
         _story.Arrange();
 
         _story.Act(ReturnCoins());
@@ -171,7 +171,7 @@ public class VendingMachineXUnitTest
         _story.Init("Feature: Change Is Returned following Purchase");
         _machine.Stock = new Dictionary<string, int> { { "Chips", 0 }, {"Candy", 1} };
         _machine.BankCoins(25, 10, 5);
-        _machine.InsertAllCoins(new List<int>() { 25, 25, 25});
+        _machine.InsertAllCoins(new int[] { 25, 25, 25 });
         _story.Arrange();
         
         _story.Act(SelectProduct("Candy"));

@@ -46,7 +46,7 @@ public class VendingMachine
             Display = "EXACT CHANGE ONLY";
     }
 
-    public virtual void InsertAllCoins(List<int> coins)
+    public virtual void InsertAllCoins(int[] coins)
     {
         foreach (var coin in coins)
         {
