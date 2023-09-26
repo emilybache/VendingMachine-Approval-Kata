@@ -1,0 +1,18 @@
+﻿Feature: Accept dime
+
+VendingMachine
+Display                                    EXACT CHANGE ONLY
+Balance                                                    0
+Coins                                                     []
+Returns                                                   []
+Selected product                                            
+Dispensed product                                           
+Stock                                                     {}
+Banked Coins                                              []
+
+insert coin: dime
+
+VendingMachine
+Display                                                $0.10
+Balance                                                   10
+Coins                                                   [10]
