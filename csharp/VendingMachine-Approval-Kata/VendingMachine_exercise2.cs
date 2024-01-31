@@ -1,6 +1,6 @@
 namespace VendingMachine_Approval_Kata;
 
-class VendingMachine_exercise2 : VendingMachine
+public class VendingMachine_exercise2 : VendingMachine
 {
     public VendingMachine_exercise2(string selectedProduct, Dictionary<string, int> stock) : base(selectedProduct, stock)
     {
