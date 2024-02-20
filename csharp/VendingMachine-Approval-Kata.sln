@@ -6,8 +6,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineTests", "Vend
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineTestRig", "VendingMachineTestRig\VendingMachineTestRig.csproj", "{4204ACAC-ACE0-4442-BB72-B3DF16CFBBCE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VendingMachineService", "VendingMachineService\VendingMachineService.csproj", "{5947DA7A-B5EF-4C62-ACEF-7B9C84251682}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
